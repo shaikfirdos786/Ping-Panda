@@ -5,7 +5,6 @@ import { EB_Garamond } from "next/font/google"
 import { cn } from "@/lib/utils"
 
 import "./globals.css"
-import { Navbar } from "../components/navbar"
 import { ClerkProvider } from "@clerk/nextjs"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
@@ -29,7 +28,6 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en" className={cn(inter.variable, eb_garamond.variable)}>
         <body className="font-sans bg-brand-50 text-brand-950 antialiased">
-          <Navbar />
           <Providers>{children}</Providers>
         </body>
       </html>
