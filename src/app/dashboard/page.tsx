@@ -6,8 +6,15 @@ import { DashboardPageContent } from "./dashboard-page-content"
 import { CreateEventCategoryModal } from "@/components/create-event-category-modal"
 import { Button } from "@/components/ui/button"
 import { PlusIcon } from "lucide-react"
+import { createCheckoutSession } from "@/lib/stripe"
 
-const Page = async () => {
+interface PageProps {
+  searchParams: {
+    [key: string]: string | string[] | undefined
+  }
+}
+
+const Page = async ({ searchParams }: PageProps) => {
   const auth = await currentUser()
 
   if (!auth) {
@@ -18,6 +25,17 @@ const Page = async () => {
 
   if (!user) {
     redirect("/sign-in")
+  }
+
+  const intent = searchParams.intent
+
+  if (intent === "upgrade") {
+    const session = await createCheckoutSession({
+      userEmail: user.email,
+      userId: user.id,
+    })
+
+    if (session.url) redirect(session.url )
   }
 
   return (
