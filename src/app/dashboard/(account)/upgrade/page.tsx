@@ -19,9 +19,11 @@ const Page = async () => {
     redirect("/sign-in")
   }
 
-  return <DashboardPage title="Pro Membership">
-    <UpgradePageContent plan={user.plan} />
-  </DashboardPage>
+  return (
+    <DashboardPage title="Pro Membership">
+      <UpgradePageContent plan={user.plan} />
+    </DashboardPage>
+  )
 }
 
 export default Page
