@@ -1,3 +1,5 @@
+"use client"
+
 import { client } from "@/lib/client"
 import { useQuery } from "@tanstack/react-query"
 import { useRouter } from "next/navigation"
@@ -71,7 +73,7 @@ export const PaymentSuccessModal = () => {
             <div className="mt-8 w-full">
               <Button onClick={handleClose} className="h-12 w-full">
                 <CheckIcon className="mr-2 size-5" />
-                Go to Dashboard 
+                Go to Dashboard
               </Button>
             </div>
           </>
