@@ -90,6 +90,8 @@ chmod +x ./create-build-package.sh
 ./create-build-package.sh
 ```
 
+> **Note**: Build packages are not stored in the Git repository due to their large size (>100MB). You need to generate them locally using the scripts above before deployment.
+
 ## Environment Variables
 
 For a complete list of required environment variables, refer to the `ENVIRONMENT_VARIABLES.md` file.
