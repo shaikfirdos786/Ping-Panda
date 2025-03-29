@@ -40,3 +40,8 @@ next-env.d.ts
 
 # wrangler
 .wrangler
+
+# build packages
+*.zip
+build-package-temp/
+source-package-temp/
