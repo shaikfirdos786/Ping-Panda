@@ -34,7 +34,7 @@ export const EmptyCategoryState = ({
     if (hasEvents) router.refresh()
   }, [hasEvents, router])
 
-  const codeSnippet = `await fetch('https://localhost:3000/api/events', {
+  const codeSnippet = `await fetch('https://pingpanda81.netlify.app/api/events', {
   method: 'POST',
   headers: {
     'Authorization': 'Bearer YOUR_API_KEY'
