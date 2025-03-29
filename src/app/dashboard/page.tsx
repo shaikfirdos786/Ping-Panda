@@ -10,12 +10,13 @@ import { createCheckoutSession } from "@/lib/stripe"
 import { PaymentSuccessModal } from "@/components/payment-success-modal"
 
 interface PageProps {
-  searchParams: {
+  searchParams: Promise<{
     [key: string]: string | string[] | undefined
-  }
+  }>
 }
 
 const Page = async ({ searchParams }: PageProps) => {
+  const resolvedSearchParams = await searchParams;
   const auth = await currentUser()
 
   if (!auth) {
@@ -28,7 +29,7 @@ const Page = async ({ searchParams }: PageProps) => {
     redirect("/sign-in")
   }
 
-  const intent = searchParams.intent
+  const intent = resolvedSearchParams.intent
 
   if (intent === "upgrade") {
     const session = await createCheckoutSession({
@@ -39,7 +40,7 @@ const Page = async ({ searchParams }: PageProps) => {
     if (session.url) redirect(session.url)
   }
 
-  const success = searchParams.success
+  const success = resolvedSearchParams.success
 
   return (
     <>
